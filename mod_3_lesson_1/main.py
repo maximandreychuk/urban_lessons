@@ -3,10 +3,9 @@ def test():
     print(a, b)
 
 
-def test_2():
-    a, b, c = 3, 4, 5
+def test_2(a, b, c):
     print(a, b, c)
 
 
 test()
-test_2()
+test_2(3, 4, 5)
