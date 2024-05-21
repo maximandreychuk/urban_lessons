@@ -12,4 +12,4 @@ class Buiding():
 my_house = Buiding(2, "2")
 
 if my_house.__eq__():
-    print('похожи')
+    print('Похожи')
