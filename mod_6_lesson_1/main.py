@@ -1,28 +1,25 @@
 class Car():
     price = 10000
-    horses = 10
 
     def horse_powers(self):
-        pass
+        return 1
 
     def __str__(self):
-        return f"Класс {self.__class__.__name__} Цена {self.price}, {self.horse_powers()}"
+        return f"Авто {self.__class__.__name__}, Цена {self.price}, Силы {self.horse_powers()}"
 
 
 class Nissan(Car):
     price = 16000
-    horses = 99
 
     def horse_powers(self):
-        return f'{self.horses} - это силы первого автомобиля'
+        return 99
 
 
 class Kia(Car):
     price = 11000
-    horses = 64
 
     def horse_powers(self):
-        return f'{self.horses} - это силы второго автомобиля'
+        return 64
 
 
 n = Nissan()
