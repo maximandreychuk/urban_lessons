@@ -5,6 +5,6 @@ class House():
 
 
 my_house = House()
-attr_name = 'numberOfFloors'
-if hasattr(my_house, attr_name):
-    print("Текущий этаж равен", my_house.numberOfFloors)
+
+for attr in range(1, my_house.numberOfFloors+1):
+    print(f"Tекущий этаж равен {attr}")
