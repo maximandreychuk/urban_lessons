@@ -6,5 +6,5 @@ class House():
 
 my_house = House()
 
-for attr in range(1, my_house.numberOfFloors+1):
-    print(f"Tекущий этаж равен {attr}")
+for value in range(1, my_house.numberOfFloors+1):
+    print(f"Tекущий этаж равен {value}")
