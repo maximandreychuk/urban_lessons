@@ -28,10 +28,10 @@ list_of_numbers_1 = [10, 92, 1, 87, 736]
 list_of_numbers_2 = [11, 20, 100, 2, 89]
 get_sign = get_numb('+')
 res = map(get_sign, list_of_numbers_1, list_of_numbers_2)
-print(list(res))
+print('Cложение', list(res))
 get_sign = get_numb('*')
 res = map(get_sign, list_of_numbers_1, list_of_numbers_2)
-print(list(res))
+print('Умножение', list(res))
 
 
 """
@@ -50,7 +50,7 @@ def res_2(x):
     return x**2
 
 
-print(res_2(16))
+print(f'Возведение в квадрат: {res_2(16)}')
 
 """
 Задача 3: Вызываемые Объекты
@@ -71,4 +71,4 @@ class Rect():
 
 
 figure = Rect(24, 2)
-print(figure())
+print(f'Площадь: {figure()}')
