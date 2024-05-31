@@ -1,47 +1,62 @@
-import queue
+
 import threading
+import queue
 import time
-from queue import Queue
 
 
-class Table():
-    def __init__(self, number: int, is_busy: bool = False):
+class Table:
+    def __init__(self, number, is_busy=False):
         self.number = number
         self.is_busy = is_busy
 
 
-class Customer():
-    def __init__(self, number):
-        self.number = number
-
-    def __str__(self):
-        return self.number
-
-
-class Cafe(threading.Thread):
-    def __init__(self, tables: list[Table], *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        self.queue_customers = queue.Queue(maxsize=20)
+class Cafe():
+    def __init__(self, tables):
+        self.queue_customers = queue.Queue()
         self.tables = tables
 
     def customer_arrival(self):
-        for numb in range(1, 21):
-            customer = Customer(number=numb)
-            self.queue_customers.put(customer)
+        for i in range(1, 21):
             time.sleep(1)
-            print(f"Посетитель номер {customer.number} прибыл")
+            print(f"Посетитель номер {i} прибыл")
+            self.queue_customers.put(i)
 
-    def serve_customer(self):
-        pass
+    def serve_customer(self, customer):
+        for table in self.tables:
+            if not table.is_busy:
+                table.is_busy = True
+                print(
+                    f"Посетитель номер {customer} ожидает свободный стол.")
+                time.sleep(5)
+                table.is_busy = False
+                print(
+                    f"Посетитель номер {customer} сел за стол {table.number}")
+                return print(f"Посетитель номер {customer} покушал и ушёл.")
+        self.queue_customers.put(customer)
 
 
-table_1 = Table(1)
-table_2 = Table(2)
-table_3 = Table(3)
-tables = [table_1, table_2, table_3]
+def customer_thread(cafe):
+    while True:
+        customer = cafe.queue_customers.get()
+        cafe.serve_customer(customer)
+        cafe.queue_customers.task_done()
+        if cafe.queue_customers.empty():
+            break
+
+
+table1 = Table(1)
+table2 = Table(2)
+table3 = Table(3)
+tables = [table1, table2, table3]
 
 cafe = Cafe(tables)
 
 customer_arrival_thread = threading.Thread(target=cafe.customer_arrival)
 customer_arrival_thread.start()
+
+for _ in range(3):
+    t = threading.Thread(target=customer_thread, args=(cafe,))
+    t.start()
+t.join()
+
 customer_arrival_thread.join()
