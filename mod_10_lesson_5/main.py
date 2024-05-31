@@ -10,6 +10,8 @@
 с использованием механизма мультипроцессорности для 
 обеспечения быстрой реакции на поступающие данные.
 """
+
+
 from requests_fold import requests
 from multiprocessing import Manager, Process
 
