@@ -15,27 +15,27 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 
-
+# использование библиотеки requests
 url3 = 'https://api.github.com'
 print(requests.get(url3).content.decode('utf-8'))
 print(requests.get(url3).status_code)
 
-
+# использование библиотеки pandas
 with open('example_50kb.csv') as emm:
     df = pd.read_csv(emm, index_col=0)
     print(df.head(10))
 
-
+# использование библиотеки numpy
 a = np.random.rand(20)
 for i in a:
     i += 1
 print(a)
 
-
+# использование библиотеки matplotlib
 plt.plot(a-1, (a+2)**2)
 plt.show()
 
-
+# использование библиотеки pillow
 url = "http://www.artlib.ru/objects/gallery_676/artlib_gallery-338391-b.jpg"
 im = Image.open(requests.get(url, stream=True).raw)
 blurred_jelly = im.filter(ImageFilter.SHARPEN)
