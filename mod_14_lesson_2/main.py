@@ -14,6 +14,7 @@ import requests
 from bs4 import BeautifulSoup as bs
 
 URL = 'https://learnodo-newtonic.com/famous-russian-artists'
+URL_1 = 'https://gallerix.ru/album/GTG?ysclid=lx09a8fmsm273940725'
 
 
 def extract_image_links(url):
@@ -25,8 +26,8 @@ def extract_image_links(url):
             file.write(f'{i['src']} \n')
     with open('links.txt', 'r') as file:
         for line in file:
-            if re.match('^https?://\S+?/\S+?\.(?:jpeg|jpg|png|gif)', line):
+            if re.match("(.+?)(?:jpeg|jpg|png|gif)", line):
                 print(line)
 
 
-extract_image_links(URL)
+extract_image_links(URL_1)
