@@ -26,8 +26,8 @@ def extract_image_links(url):
             file.write(f'{i['src']} \n')
     with open('links.txt', 'r') as file:
         for line in file:
-            if re.match("(.+?)(?:jpeg|jpg|png|gif)", line):
+            if re.match("https://(.+?)(?:jpeg|jpg|png|gif)", line):
                 print(line)
 
 
-extract_image_links(URL_1)
+extract_image_links(URL)
