@@ -1,3 +1,20 @@
+"""
+Техническое задание:
+Создайте базу данных students.db
+В базе данных должны существовать 2 таблицы: students и grades
+В таблице students должны присутствовать следующие поля: id, name, age
+В таблице grades должны присутствовать следующие поля: id, student_id, subject, grade
+Так же нужно создать класс University со следующими атрибутами и методами:
+name - имя университета
+add_student(name, age) - метод добавления студента.
+add_grade(sudent_id, subject, grade) - метод добавления оценки.
+get_students(subject=None) - метод для возврата списка студентов в формате
+[(Ivan, 26, Python, 4.8), (Ilya, 24, PHP, 4.3)],где subject, 
+если не является None(по умолчанию) и если такой предмет существует, 
+выводит студентов только по этому предмету.
+"""
+
+
 import sqlite3
 
 conn = sqlite3.connect('students.db')
