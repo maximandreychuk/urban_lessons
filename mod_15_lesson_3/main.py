@@ -15,14 +15,15 @@
 
 import cv2
 import numpy as np
-cap = cv2.VideoCapture(0)
+
 
 while True:
+    cap = cv2.VideoCapture(0)
     ret, frame = cap.read()
-    eyes_cascade = cv2.CascadeClassifier('left_eye.xml')
+    eyes_cascade = cv2.CascadeClassifier('eyes.xml')
     gray_frame = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
     eyes = eyes_cascade.detectMultiScale(
-        gray_frame, scaleFactor=1.3, minNeighbors=20)
+        gray_frame, scaleFactor=1.1, minNeighbors=5)
 
     for (x, y, w, h) in eyes:
         cv2.rectangle(frame, (x, y), (x+w, y + h), (77, 77, 77), 0)
