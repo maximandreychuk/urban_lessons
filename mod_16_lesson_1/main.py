@@ -69,4 +69,5 @@ def write_cmc_top():
             counter += 1
 
 
-write_cmc_top()
+if __name__ == "__main__":
+    write_cmc_top()
