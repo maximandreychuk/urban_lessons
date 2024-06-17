@@ -1,4 +1,6 @@
 """
+Чтобы запустить файл активируйте виртуальное окружение и установите зависимости
+
 Техническое задание:
 Программа должна считывать данные с сайта CoinMarketCap.
 Для парсинга и запросов разрешено использовать любую из перечисленных библиотек: 
@@ -53,13 +55,17 @@ def write_cmc_top():
         cap_list.append(capital)
         summa = sum(cap_list)
 
-    with open(f'{datetime.now().strftime("%H:%M %d.%m.%Y")}.csv', 'w', newline='') as out_csv:
+    dt = datetime.now().strftime("%H:%M %d.%m.%Y")
+    with open(f'{dt}.csv', 'w', newline='') as out_csv:
         writer = csv.writer(out_csv, delimiter=" ", lineterminator="\r")
         writer.writerow(['Name', 'MC', 'MP'])
         counter = 0
         for _ in range(len(name_list)):
             writer.writerow([
-                name_list[counter], cap_list[counter], f'{round(cap_list[counter]/summa*100)}%'])
+                name_list[counter],
+                cap_list[counter],
+                f'{round(cap_list[counter]/summa*100, ndigits=5)}%'
+            ])
             counter += 1
 
 
