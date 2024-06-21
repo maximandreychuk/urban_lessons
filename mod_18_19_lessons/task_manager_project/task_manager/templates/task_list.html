@@ -1,0 +1,19 @@
+<!-- task_manager/task_list.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Task Manager</title>
+</head>
+<body>
+    <h1>Мои задачи</h1>
+    {% for task in tasks %}
+        <div>
+            <h2>{{ task.title }}</h2>
+            <p>{{ task.description }}</p>
+            <p>Приоритет: {{ task.priority }}</p>
+            <p>Статус: {{ task.status }}</p>
+            <p>Дата создания: {{ task.created_date }}</p>
+        </div>
+    {% endfor %}
+</body>
+</html>
