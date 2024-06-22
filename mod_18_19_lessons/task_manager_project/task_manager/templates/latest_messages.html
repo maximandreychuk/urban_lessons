@@ -1,0 +1,8 @@
+{% for comment in comments %}
+<div>
+    <h1> Комментарий к задаче {{ comment.task }}</h1>
+    <p>Автора {{ comment.author }}</p>
+    <p>{{ comment.text }}</p>
+    <p>Дата создания:{{ comment.created }}</p>
+</div>
+{% endfor %}

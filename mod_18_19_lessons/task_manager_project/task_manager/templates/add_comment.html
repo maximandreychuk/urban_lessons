@@ -1,0 +1,10 @@
+<html>
+  <head>
+  <title>Добавление комментария</title>
+  </head>
+<body>  
+  <form method="POST">
+    {% csrf_token %}
+    {{comment_form.as_p}}
+  </form>
+</body>

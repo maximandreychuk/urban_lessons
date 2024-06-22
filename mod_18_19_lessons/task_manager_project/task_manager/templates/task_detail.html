@@ -1,0 +1,17 @@
+<!-- task_manager/task_detail.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Task Manager</title>
+</head>
+<body>
+    <h1>Моя задача <h2>{{ task }}</h2> </h1>
+    <div>
+        <h2>{{ task.title }}</h2>
+        <p>{{ task.description }}</p>
+        <p>Приоритет: {{ task.priority }}</p>
+        <p>Статус: {{ task.status }}</p>
+        <p>Дата создания: {{ task.created_date }}</p>
+    </div>
+</body>
+</html>

@@ -26,3 +26,19 @@ class Task(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class Comment(models.Model):
+    text = models.TextField()
+    author = models.ForeignKey(
+        User, on_delete=models.CASCADE, related_name='author_comments')
+    task = models.ForeignKey(
+        Task, on_delete=models.CASCADE, related_name='task_comments')
+    created = models.DateTimeField(auto_now_add=True)
+    # active = models.BooleanField(default=True)
+
+
+class Message(models.Model):
+    name = models.CharField(max_length=100)
+    email = models.EmailField()
+    message = models.CharField(max_length=300)

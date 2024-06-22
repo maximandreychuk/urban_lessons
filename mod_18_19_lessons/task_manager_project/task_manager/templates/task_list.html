@@ -9,6 +9,7 @@
     {% for task in tasks %}
         <div>
             <h2>{{ task.title }}</h2>
+            <p>{{ task.id }}</p>
             <p>{{ task.description }}</p>
             <p>Приоритет: {{ task.priority }}</p>
             <p>Статус: {{ task.status }}</p>
