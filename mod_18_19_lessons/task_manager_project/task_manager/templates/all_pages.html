@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Task Manager</title>
+</head>
+<body>
+    <h1>Все страницы</h1>
+    {% for page in pages %}
+        <div>
+            <a href="{{ page.get_absolute_url }}">{{ page.title }}</a>
+        </div>
+    {% endfor %}
+</body>
+</html>

@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 from django.contrib.auth.models import User
 from django.core.validators import MinValueValidator, MaxValueValidator
 
@@ -42,3 +43,15 @@ class Message(models.Model):
     name = models.CharField(max_length=100)
     email = models.EmailField()
     message = models.CharField(max_length=300)
+
+
+class Page(models.Model):
+    title = models.CharField(max_length=250)
+    content = models.TextField()
+    slug = models.SlugField(max_length=255)
+
+    def __str__(self):
+        return self.title
+
+    def get_absolute_url(self):
+        return f'/pages/{self.slug}'

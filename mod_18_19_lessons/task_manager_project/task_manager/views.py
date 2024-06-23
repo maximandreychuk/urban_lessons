@@ -1,6 +1,8 @@
+import datetime
+import random
 from .forms import ContactForm
 from django.shortcuts import redirect, render
-from .models import Task, Comment
+from .models import Comment, Page, Task
 
 
 def get_tasks(request):
@@ -35,3 +37,34 @@ def add_comment(request, task_id):
         else:
             cf = ContactForm()
         return render(request, 'add_comment.html', {'comment_form': cf})
+
+
+# далее - Домашнее задание по теме "DTL. Подробнее о шаблонах и тегах.
+def array(request):
+    lst = []
+    comments = Comment.objects.all()
+    for c in comments:
+        lst.append(c)
+    return render(request, 'arrays.html', {'comments': lst})
+
+
+def different_time_formats(request):
+    dt = datetime.datetime.now()
+    return render(request, 'different_time_formats.html', {'dt': dt})
+
+
+def get_all_pages(request):
+    pages = Page.objects.all()
+    return render(request, 'all_pages.html', {'pages': pages})
+
+
+def get_page_detail(request, page_slug):
+    page = Page.objects.get(slug=page_slug)
+    return render(request, 'page_detail.html', {'page': page})
+
+
+def random_tag_color(request):
+    r = random.randint(0, 255)
+    g = random.randint(0, 255)
+    b = random.randint(0, 255)
+    return render(request, 'random_color_template.html', {'r': r, 'g': g, 'b': b})
