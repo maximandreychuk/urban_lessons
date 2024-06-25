@@ -19,4 +19,8 @@ urlpatterns = [
          name='page_detail'),
     path('generate_tag/', views.random_tag_color,
          name='tags_color'),
+
+    # далее - Домашнее задание по теме "Джанго формы"
+    path('register/', views.register),
+    path('booking/', views.booking),
 ]

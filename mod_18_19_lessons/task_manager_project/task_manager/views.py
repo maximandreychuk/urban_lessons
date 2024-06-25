@@ -1,7 +1,8 @@
 import datetime
 import random
-from .forms import ContactForm
+from django.http import HttpResponse
 from django.shortcuts import redirect, render
+from .forms import BookingForm, ContactForm, RegistrationForm
 from .models import Comment, Page, Task
 
 
@@ -68,3 +69,37 @@ def random_tag_color(request):
     g = random.randint(0, 255)
     b = random.randint(0, 255)
     return render(request, 'random_color_template.html', {'r': r, 'g': g, 'b': b})
+
+
+# далее - Домашнее задание по теме "Джанго формы".
+
+def validate_data(email, password):
+    if '@' not in email:
+        return f'Неверный формат email {email}'
+    elif len(password) < 8:
+        return f'Пароль {password} слишком короткий'
+    else:
+        return 'Данные прошли валидацию'
+
+
+def register(request):
+    if request.method == 'POST':
+        form = RegistrationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            username = form.cleaned_data['username']
+            return HttpResponse(f'<h2>Hello, {username}</h2>')
+    else:
+        form = RegistrationForm()
+    return render(request, 'signup.html', {'form': form})
+
+
+def booking(request):
+    if request.method == 'POST':
+        form = BookingForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return HttpResponse(f'<h2>Бронь прошла успешно!</h2>')
+    else:
+        form = BookingForm()
+    return render(request, 'booking.html', {'form': form})

@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Author, Book, Task, Comment, Page, Publisher, Warehouse, Goods, Manager, Stocktaking, Shipper, GoodsWarehouse, TechicalMachine
+from .models import Booking, ExtraService, Tour, Author, Book, Task, Comment, Page, Publisher, Warehouse, Goods, Manager, Stocktaking, Shipper, GoodsWarehouse, TechicalMachine
 
 
 @admin.register(Book)
@@ -31,3 +31,7 @@ admin.site.register(Stocktaking)
 admin.site.register(Shipper)
 admin.site.register(GoodsWarehouse)
 admin.site.register(TechicalMachine)
+
+admin.site.register(Booking)
+admin.site.register(Tour)
+admin.site.register(ExtraService)
