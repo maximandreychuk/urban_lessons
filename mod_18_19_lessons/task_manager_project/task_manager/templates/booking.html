@@ -7,8 +7,10 @@
     <h2>Заполните форму своими данными:</h2>
     <form method="post">
         {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Сохранить</button>
+        {{ tour_form.as_p }}
+        {{ booking_form.as_p }}
+        {{ tourist_form.as_p }}
+        <button type="submit">Забронировать</button>
     </form>
 </body>
 </html>

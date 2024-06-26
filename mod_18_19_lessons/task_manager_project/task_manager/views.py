@@ -2,8 +2,8 @@ import datetime
 import random
 from django.http import HttpResponse
 from django.shortcuts import redirect, render
-from .forms import BookingForm, ContactForm, RegistrationForm
-from .models import Comment, Page, Task
+from .forms import BookingForm, ContactForm, RegistrationForm, TouristForm
+from .models import Comment, Page, Task, Tour, Booking
 
 
 def get_tasks(request):
@@ -96,10 +96,17 @@ def register(request):
 
 def booking(request):
     if request.method == 'POST':
-        form = BookingForm(request.POST)
-        if form.is_valid():
-            form.save()
+        booking_form = BookingForm(request.POST)
+        tourist_form = TouristForm(request.POST)
+        if booking_form.is_valid() and tourist_form.is_valid():
+            booking_form.save()
+            tourist_form.save()
             return HttpResponse(f'<h2>Бронь прошла успешно!</h2>')
     else:
-        form = BookingForm()
-    return render(request, 'booking.html', {'form': form})
+        booking_form = BookingForm()
+        tourist_form = TouristForm()
+    return render(request,
+                  'booking.html',
+                  {'booking_form': booking_form,
+                   'tourist_form': tourist_form}
+                  )
