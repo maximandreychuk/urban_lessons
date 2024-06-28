@@ -1,0 +1,63 @@
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Посты</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+<body>  
+    {% block content %}
+        {% for post in page_obj %}
+        <ul style="margin: 0 30px 15px;">
+          <li>
+            Tайтл: {{ post.title }}
+          </li>
+          <li>
+            Дата публикации: {{ post.created|date:"d E Y" }}
+          </li>
+        </ul>
+        </div>
+        {% endfor %} 
+        {% endblock %} 
+    </body>
+
+
+
+       
+{% if page_obj.has_other_pages %}
+<nav aria-label="Page navigation" class="my-5">
+<ul class="pagination">
+    {% if page_obj.has_previous %}
+    
+    <li class="page-item"><a class="page-link" href="?page=1">Первая</a></li>
+    <li class="page-item">
+        <a class="page-link" href="?page={{ page_obj.previous_page_number }}">
+        Предыдущая
+        </a>
+    </li>
+    {% endif %}
+    {% for i in page_obj.paginator.page_range %}
+        {% if page_obj.number == i %}
+        <li class="page-num active">
+            <span class="page-link">{{ i }}</span>
+        </li>
+        {% else %}
+        <li class="page-num">
+            <a class="page-link" href="?page={{ i }}">{{ i }}</a>
+        </li>
+        {% endif %}
+    {% endfor %}
+    {% if page_obj.has_next %}
+    <li class="page-num">
+        <a class="page-link" href="?page={{ page_obj.next_page_number }}">
+        Следующая
+        </a>
+    </li>
+    <li class="page-num">
+        <a class="page-link" href="?page={{ page_obj.paginator.num_pages }}">
+        Последняя
+        </a>
+    </li>
+    {% endif %}    
+</ul>
+</nav>
+{% endif %}
