@@ -1,0 +1,20 @@
+<!-- task_manager/task_list.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Object Detection Platform</title>
+</head>
+{% block mainmenu %}
+		<div class="header">
+			<ul id="mainmenu" class="mainmenu">
+				{% if request.user.is_authenticated %}
+				<li class="last"> Вы вошли в систему как {{request.user}} <a href="{% url 'logout' %}">Выйти</a> </li>
+                {% else %}
+				<li class="last"><a href="{% url 'register' %}">Регистрация</a> </li>
+				<li class="last"><a href="{% url 'login' %}">Авторизация</a> </li>
+				{% endif %}
+			</ul>
+			<div class="clear"></div>
+		</div>
+{% endblock mainmenu %}
+</html>
