@@ -6,10 +6,6 @@ from django.views.generic import CreateView
 from django.urls import reverse_lazy, reverse
 
 
-def index(request):
-    return render(request, 'base.html')
-
-
 class RegisterView(CreateView):
     form_class = UserCreationForm
     template_name = 'users/register.html'
