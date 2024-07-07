@@ -51,8 +51,8 @@ def detection(request):
         im = Image.fromarray(image)
         im.save(f'findobj/media/loads/{filename}')
         res_image = IMG.objects.create(image=filename,
-                                       user=request.user,
-                                       confidence=label)
+                                       user=request.user,)
+        #    confidence=label)
         res_image.save()
         return render(request, 'findobj/result.html', {
             'res_image': res_image
