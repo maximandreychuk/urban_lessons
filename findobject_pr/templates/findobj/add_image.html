@@ -6,13 +6,22 @@
     <title>Object Detection Platform</title>
   {% bootstrap_css %}
   {% bootstrap_javascript %}
+<<<<<<< HEAD
 </head> -->
 
 <form method="post" enctype="musltipart/form-data">
+=======
+</head>
+
+<a href="{% url 'base' %}" target="_blank">На главную страницу</a>
+
+<body style="display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; flex-direction: column; font-size: 20px">
+    <form method="post" enctype="multipart/form-data">
+>>>>>>> details
     {% csrf_token %}
         <input type="file" name="myfile1">
         <button type="submit">Поиск</button>
       </form>
+</body>
+<p></p>
 
-
-<a href="{% url 'base' %}" target="_blank">На главную страницу</a>

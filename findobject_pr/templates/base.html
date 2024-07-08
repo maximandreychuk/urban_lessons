@@ -6,14 +6,17 @@
     <title>Object Detection Platform</title>
   {% bootstrap_css %}
   {% bootstrap_javascript %}
+<<<<<<< HEAD
 </head> -->
+=======
+</head>
+<body style="display: flex; justify-content: center; align-items: center; flex-direction: column;"></body>
+>>>>>>> details
 {% block mainmenu %}
 		<div class="header">
 			<ul id="mainmenu" class="mainmenu">
 				{% if request.user.is_authenticated %}
 				<li class="last"> Вы вошли в систему как {{request.user}} <a href="{% url 'logout' %}">Выйти</a> </li>
-	
-				<li class="last"><a href="{% url 'get_users_images' %}">Мои обработанные изображения</a> </li>
                 {% else %}
 				<li class="last"><a href="{% url 'register' %}">Регистрация</a> </li>
 				<li class="last"><a href="{% url 'login' %}">Авторизация</a> </li>
@@ -22,16 +25,17 @@
 			<div class="clear"></div>
 		</div>
 {% endblock mainmenu %}
-
 {% block content %}
+
 {% if request.user.is_authenticated %}
+<rb class="last"><a href="{% url 'get_users_images' %}">Мои обработанные изображения</a> </rb>
 <h2 method="post" class="find"><a href="{% url 'detection' %}">Найти объект</a> </h2>
 <h1> Результаты обработки</h1>
 {% for i in all_images %}
 {% thumbnail i.image "300x300" crop="center" as im %}
 	<hr class="divider" />
-	<a href="{% url 'detection' %}" target="_blank">
-    <img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}">
+	<a  target="_blank" href="{{ i.image.url }}">
+    <img class="aligncenter"  src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}" >
 	</a>
 	<p> </p>
 	Автор: {{i.user}}, результат: {{i.confidence}}
@@ -41,3 +45,5 @@
 Это домашняя страница вашего приложения. <p>Чтобы получить доступ, пожалуйста, <a href="{% url 'register' %}">зарегистрируйтесь</a> </p>
 {% endif %}
 {% endblock content %}
+</body>
+</html>

@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load thumbnail %}
 {% block content %}
-<li class="last"><a href="{% url 'base' %}">Все обработанные изображения</a> </li>
+<rb class="last"><a href="{% url 'base' %}">Все обработанные изображения</a> </rb>
 <h1> Мои результаты</h1>
 {% for i in users_images %}
 {% thumbnail i.image "300x300" crop="center" as im %}
@@ -9,6 +9,8 @@
     <a href="{% url 'detection' %}" target="_blank">
     <img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}">
     </a>
+    <p> </p>
+    Результат: {{i.confidence}}
     <p> </p>
     <a href="{% url 'image_delete' i.id %}" target="_blank" method="post">Удалить</a>
 {% endthumbnail %}
