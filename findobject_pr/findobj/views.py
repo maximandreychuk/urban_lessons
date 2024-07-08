@@ -93,13 +93,8 @@ def detection(request):
             answer = 'Объект не найден'
 
         res_image = IMG.objects.create(image=filename,
-<<<<<<< HEAD
-                                       user=request.user,)
-        #    confidence=label)
-=======
                                        user=request.user,
                                        confidence=answer)
->>>>>>> details
         res_image.save()
         return render(request, 'findobj/result.html', {
             'res_image': res_image
