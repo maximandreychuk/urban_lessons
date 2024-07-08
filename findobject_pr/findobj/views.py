@@ -4,7 +4,7 @@ from .models import Image as IMG
 import cv2
 import numpy as np
 from PIL import Image
-from .detection import classes
+from .utils import classes
 from django.shortcuts import redirect
 
 

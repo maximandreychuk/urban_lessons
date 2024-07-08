@@ -6,5 +6,4 @@ class Image(models.Model):
     image = models.ImageField(upload_to='findobj/media/loads')
     user = models.ForeignKey(
         User, on_delete=models.CASCADE, related_name='user_images', default=1)
-    result_image = models.ImageField(upload_to='findobj/media/results')
     confidence = models.CharField(max_length=10, default='0%')

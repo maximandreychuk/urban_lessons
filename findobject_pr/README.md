@@ -23,7 +23,7 @@ python3 -m venv env
 source env/bin/activate
 ```
 
-Установить зависимости из файла requirements.txt:
+Установить зависимости из файла requirements.txt(pip3 если MacOS):
 
 ```
 python3 -m pip install --upgrade pip
