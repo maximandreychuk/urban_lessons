@@ -6,7 +6,7 @@
 {% for i in users_images %}
 {% thumbnail i.image "300x300" crop="center" as im %}
 	<hr class="divider" />
-    <a href="{% url 'detection' %}" target="_blank">
+    <a  target="_blank" href="{{ i.image.url }}">
     <img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}">
     </a>
     <p> </p>
