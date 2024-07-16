@@ -6,6 +6,7 @@ import numpy as np
 from PIL import Image
 from .utils import classes
 from django.shortcuts import redirect
+from ultralytics import YOLO
 
 
 def index(request):
@@ -18,7 +19,8 @@ def get_users_images(request):
     return render(request, 'findobj/my_images.html', {'users_images': users_images})
 
 
-def detection(request):
+def mobilenetssd(request):
+
     if request.method == 'POST' and request.FILES:
         file = request.FILES['myfile1']
         fs = FileSystemStorage()
@@ -99,7 +101,35 @@ def detection(request):
         return render(request, 'findobj/result.html', {
             'res_image': res_image
         })
-    return render(request, 'findobj/add_image.html')
+    return render(request, 'findobj/mobilenetssd.html')
+
+
+def yolov5(request):
+
+    if request.method == 'POST' and request.FILES:
+        file = request.FILES['myfile1']
+        fs = FileSystemStorage()
+        filename = fs.save(file.name, file)
+
+        model = YOLO('yolov8m.pt')
+        results = model.predict(f'findobj/media/loads/{filename}')
+        result = results[0]
+        result.boxes
+
+        for i, r in enumerate(results):
+            img_bgr = r.plot()
+            im_rgb = Image.fromarray(img_bgr[..., ::-1])
+            # r.save(f'findobj/media/loads/{filename}')
+            im_rgb.save(f'findobj/media/loads/{filename}')
+            res_image = IMG.objects.create(image=filename,
+                                           user=request.user,
+                                           confidence=i)
+            res_image.save()
+            # print('- - - -- - - - ', result)
+            return render(request, 'findobj/result.html', {
+                'res_image': res_image
+            })
+    return render(request, 'findobj/yolov5.html')
 
 
 def delete(request, pk):

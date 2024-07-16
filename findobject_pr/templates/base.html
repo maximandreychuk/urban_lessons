@@ -7,7 +7,6 @@
   {% bootstrap_css %}
   {% bootstrap_javascript %}
 </head>
-</head>
 <body style="display: flex; justify-content: center; align-items: center; flex-direction: column;"></body>
 {% block mainmenu %}
 		<div class="header">
@@ -26,7 +25,8 @@
 
 {% if request.user.is_authenticated %}
 <rb class="last"><a href="{% url 'get_users_images' %}">Мои обработанные изображения</a> </rb>
-<h2 method="post" class="find"><a href="{% url 'detection' %}">Найти объект</a> </h2>
+<h2 method="post" class="find"><a href="{% url 'mobilenetssd' %}">Найти объект c mobilenetssd</a> </h2>
+<h2 method="post" class="find"><a href="{% url 'yolov5' %}">Найти объект c yolov5</a> </h2>
 <h1> Результаты обработки</h1>
 {% for i in all_images %}
 {% thumbnail i.image "300x300" crop="center" as im %}

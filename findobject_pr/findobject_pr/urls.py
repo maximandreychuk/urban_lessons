@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.urls import path
-from findobj.views import detection, get_users_images, index, delete
+from findobj.views import mobilenetssd, get_users_images, index, delete, yolov5
 from user.views import LoginView, logout_user, RegisterView
 from django.conf.urls.static import static
 from django.conf import settings
@@ -17,7 +17,8 @@ urlpatterns = [
 
     # findobj path
     path('myimg/', get_users_images, name='get_users_images'),
-    path('detection/', detection, name='detection'),
+    path('mobilenetssd/', mobilenetssd, name='mobilenetssd'),
+    path('yolov5/', yolov5, name='yolov5'),
     path('delete/<str:pk>/',
          delete, name="image_delete"),
 ]

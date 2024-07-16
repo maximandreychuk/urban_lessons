@@ -1,0 +1,23 @@
+{% load thumbnail %}
+{% load django_bootstrap5 %}
+<!DOCTYPE html>
+
+<head>
+    <title>Object Detection Platform</title>
+  {% bootstrap_css %}
+  {% bootstrap_javascript %}
+</head>
+
+</head>
+
+<a href="{% url 'base' %}" target="_blank">На главную страницу</a>
+
+<body style="display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; flex-direction: column; font-size: 20px">
+    <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+        <input type="file" name="myfile1">
+        <button type="submit">Поиск объекта</button>
+      </form>
+</body>
+<p></p>
+
